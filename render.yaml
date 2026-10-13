@@ -1,0 +1,14 @@
+# Render Blueprint. Use a Docker runtime and a paid instance if required by current plan limits.
+services:
+  - type: worker
+    name: telegram-pdf-converter
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: MAX_FILE_MB
+        value: "18"
+      - key: MAX_QUEUED_IMAGES
+        value: "10"
